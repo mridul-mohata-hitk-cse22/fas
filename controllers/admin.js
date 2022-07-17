@@ -15,7 +15,7 @@ module.exports.home=async function(req, res) {
 
 module.exports.teacher=async function(req, res) {
     try {
-        let result=await Class.fetch(req.params.id, 2);
+        let result=await Class.fetch(req.params.id, 3);
         res.render("admin/classes", result);
     }
     catch(e) {
