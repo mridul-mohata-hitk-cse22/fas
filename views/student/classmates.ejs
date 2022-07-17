@@ -1,0 +1,22 @@
+<%- include('../partials/header', {title: info.paper + ' - Classmates', loggedIn: true}) %>
+<section>
+    <table class="table" style="margin-top: 24px;">
+        <thead>
+            <tr class="table-tr">
+                <th class="table-th">Serial</th>
+                <th class="table-th">Name</th>
+                <th class="table-th">Roll</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0;i<students.length;i++) { let s=students[i]; %>
+            <tr class="table-tr">
+                <td class="table-td"><%= i + 1 %></td>
+                <td class="table-td"><%= s.name %></td>
+                <td class="table-td"><%= s.id %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>
+<%- include('../partials/footer') %>

@@ -1,0 +1,21 @@
+<%- include('../partials/header', {title: info.paper + ' - Ratings', loggedIn: true}) %>
+<section>
+    <h4>Total number of ratings = <%= total %></h4>
+    <table class="table" style="margin-top: 24px;">
+        <thead>
+            <tr class="table-tr">
+                <th class="table-th">Question</th>
+                <th class="table-th">Average</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0;i<ratings.length;i++) { let r=ratings[i]; %>
+            <tr class="table-tr">
+                <td class="table-td"><%= questions[r.question - 1] %></td>
+                <td class="table-td"><%= r.average %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>
+<%- include('../partials/footer') %>

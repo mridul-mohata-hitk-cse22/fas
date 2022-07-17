@@ -1,0 +1,22 @@
+<%- include('../partials/header', {title: info.paper + ' - Attendance', loggedIn: true}) %>
+<section>
+    <table class="table" style="margin-top: 24px;">
+        <thead>
+            <tr class="table-tr">
+                <th class="table-th">Serial</th>
+                <th class="table-th">Date</th>
+                <th class="table-th" style="width: 15%;">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0;i<attendance.length;i++) { let d=attendance[i]; %>
+            <tr class="table-tr">
+                <td class="table-td"><%= (i + 1) %></td>
+                <td class="table-td"><%= d.date.toLocaleDateString() %></td>
+                <td class="table-td"><%= d.value %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>
+<%- include('../partials/footer') %>

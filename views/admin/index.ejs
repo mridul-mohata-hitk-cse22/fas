@@ -1,0 +1,18 @@
+<%- include('../partials/header', {title: 'Admin Portal', loggedIn: true}) %>
+<section>
+    <h1 style="margin-bottom: 0;">Teachers</h1>
+    <p>Search for a teacher to view their classes and all data associated with them</p>
+    <input id="teacher" class="input" type="text" placeholder="Enter employee id" style="max-width: 400px;">
+    <button class="button" onclick="teacher()">Search</button>
+
+    <h1 style="margin-top: 48px;">Ratings</h1>
+    <div id="ratings">
+        <% if(enableRatings) { %>
+            <p>All active classes will be opened for ratings by the students</p>
+            <button class="button" onclick="enableRatings(this)" style="margin-top: 16px;">Enable</button>
+        <% } else { %>
+            <p>Ratings are enabled for all classes</p>
+        <% } %>
+    </div>
+</section>
+<%- include('../partials/footer') %>

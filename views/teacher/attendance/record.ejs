@@ -1,0 +1,34 @@
+<%- include('../../partials/header', {title: (info.paper + ' - Attendance'), loggedIn: true}) %>
+<section>
+    <h1 style="margin-bottom: 0;">Attendance</h1>
+    <input id="class" type="hidden" value="<%= info.class %>">
+    <input id="date" class="input" type="date" placeholder="Enter date" style="display: inline;width: calc(50% - 16px);max-width: 200px;">
+    <input id="count" class="input" type="number" placeholder="Enter total attendance" style="display: inline;width: calc(50% - 12px);max-width: 200px;margin-left: 24px;">
+
+    <div style="overflow-x: auto">
+        <table class="table" style="margin-top: 24px;">
+            <thead>
+                <tr class="table-tr">
+                    <th class="table-th">Serial</th>
+                    <th class="table-th">Name</th>
+                    <th class="table-th">Roll</th>
+                    <th class="table-th" style="text-align: center;width: 20%;">Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0;i<students.length;i++) { let s=students[i]; %>
+                <tr class="table-tr">
+                    <td class="table-td"><%= i + 1 %></td>
+                    <td class="table-td"><%= s.name %></td>
+                    <td class="table-td"><%= s.id %></td>
+                    <td class="table-td" style="text-align: center;">
+                        <input class="attendance-input" type="number" min="0" data-roll="<%= s.id %>" style="width: 48px;">
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <button class="button" onclick="attendance()" style="margin-top: 36px;">Submit</button>
+</section>
+<%- include('../../partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('../partials/header', {title: (info.paper + ' - Students'), loggedIn: true}) %>
+<section>
+    <table class="table" style="margin-top: 24px;">
+        <thead>
+            <tr class="table-tr">
+                <th class="table-th">Serial</th>
+                <th class="table-th">Name</th>
+                <th class="table-th">Roll</th>
+                <th class="table-th" style="width: 15%;">Attendance</th>
+                <th class="table-th" style="width: 15%;">Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0;i<students.length;i++) { let s=students[i]; %>
+            <tr class="table-tr">
+                <td class="table-td"><%= i + 1 %></td>
+                <td class="table-td"><%= s.name %></td>
+                <td class="table-td"><a href="<%= '/admin/class/' + info.class + '/attendance/' + s.id %>"><%= s.id %></a></td>
+                <td class="table-td"><%= s.attendance %></td>
+                <td class="table-td"><%= s.percentage.toFixed(2); %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>
+<%- include('../partials/footer') %>

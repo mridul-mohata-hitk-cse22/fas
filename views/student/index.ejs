@@ -1,0 +1,37 @@
+<%- include('../partials/header', {title: 'My Classes', loggedIn: true}) %>
+<section>
+    <div style="margin-top: 32px;">
+        <% for(let i=0;i<classes.length;i++) { let c=classes[i]; %>
+        <div class="class-card">
+            <div class="class-card-section" style="border-bottom: 2px solid #eee;">
+                <span class="class-name"><%= c.paper %></span>
+                <span><%= c.name %></span>
+            </div>
+            <div class="class-card-section">
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td>Teacher</td>
+                            <td>Year</td>
+                            <td>Semester</td>
+                        </tr>
+                        <tr>
+                            <td><%= c.teacher %></td>
+                            <td><%= c.year %></td>
+                            <td><%= c.sem %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="class-card-section" style="border-top: 2px solid #eee;color: blueviolet;">
+                <% if(c.eligibility) { %>
+                <a class="links" href="<%= '/student/class/' + c.id + '/rate' %>" style="margin-right: 24px;">Rate</a>
+                <% } %>
+                <a class="links" href="<%= '/student/class/' + c.id + '/attendance' %>" style="margin-right: 24px;">Attendance</a>
+                <a class="links" href="<%= '/student/class/' + c.id + '/classmates' %>">Classmates</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</section>
+<%- include('../partials/footer') %>

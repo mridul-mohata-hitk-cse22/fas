@@ -1,0 +1,32 @@
+<%- include('../partials/header', {title: info.paper + ' - Rate', loggedIn: true}) %>
+<section>
+    <% if(access) { %>
+        <input id="class" type="hidden" value="<%= info.class %>">
+        <form id="ratings-form">
+            <% for(let i=0;i<questions.length;i++) { let q=questions[i]; %>
+                <div>
+                    <h3 style="margin-bottom: 0;"><%= q %></h3>
+                    <div class="rating" style="--size: 48px;">
+                        <input type="radio" class="rating" id="<%= 'q' + (i+1) + '5' %>" name="<%= 'q' + (i+1) %>" value="5"><label for="<%= 'q' + (i+1) + '5' %>">☆</label>
+                        <input type="radio" class="rating" id="<%= 'q' + (i+1) + '4' %>" name="<%= 'q' + (i+1) %>" value="4"><label for="<%= 'q' + (i+1) + '4' %>">☆</label>
+                        <input type="radio" class="rating" id="<%= 'q' + (i+1) + '3' %>" name="<%= 'q' + (i+1) %>" value="3"><label for="<%= 'q' + (i+1) + '3' %>">☆</label>
+                        <input type="radio" class="rating" id="<%= 'q' + (i+1) + '2' %>" name="<%= 'q' + (i+1) %>" value="2"><label for="<%= 'q' + (i+1) + '2' %>">☆</label>
+                        <input type="radio" class="rating" id="<%= 'q' + (i+1) + '1' %>" name="<%= 'q' + (i+1) %>" value="1"><label for="<%= 'q' + (i+1) + '1' %>">☆</label>
+                    </div>
+                </div>
+                <% } %>
+        </form>
+        <button class="button" onclick="rate()" style="margin-top: 36px;">Submit</button>
+    <% } else { %>
+        <h3>Access Denied!</h3>
+        <p>
+            This might happen due to any of the following reason:
+            <ul>
+                <li>You have already rated the class</li>
+                <li>You dont have required attendance</li>
+                <li>Ratings have not been enabled</li>
+            </ul>
+        </p>
+    <% } %>
+</section>
+<%- include('../partials/footer') %>
