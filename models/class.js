@@ -9,7 +9,7 @@ module.exports.fetch=async function(userId, type) {
     if(type==1)
     sql='SELECT c.id, c.paper, p.name, t.name as teacher, c.sem, c.year, m.attendance, c.count, c.ratings, m.rated FROM map m INNER JOIN class c ON m.class=c.id INNER JOIN paper p ON c.paper=p.code INNER JOIN teacher t ON c.teacher=t.id WHERE m.student=? AND c.active=1';
     else if(type==2 || type==3) 
-    sql='SELECT c.id, c.paper, p.name, c.name as classname, t.name as teacher, c.sem, c.year FROM map m INNER JOIN class c ON m.class=c.id INNER JOIN paper p ON c.paper=p.code INNER JOIN teacher t ON c.teacher=t.id WHERE c.teacher=? AND c.active=1';
+    sql='SELECT c.id, c.paper, p.name, c.name as classname, t.name as teacher, c.sem, c.year FROM class c INNER JOIN paper p ON c.paper=p.code INNER JOIN teacher t ON c.teacher=t.id WHERE c.teacher=? AND c.active=1';
 
     try {
         await db.connect();
@@ -31,7 +31,7 @@ module.exports.fetch=async function(userId, type) {
         };
 
         if(type==3)
-        temp.teacher=results[0].teacher;
+        temp.teacher=(results[0])? results[0].teacher : null;
 
         return temp;
     }
